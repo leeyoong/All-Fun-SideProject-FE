@@ -1,9 +1,13 @@
 package com.example.test;
 
+import androidx.annotation.ChecksSdkIntAtLeast;
+
+import com.example.test.DTO.*;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -12,7 +16,7 @@ public interface ApiInterface {
 
     //email.check
     @POST("/auth/check/email")
-    Call<ResponseJson> EmailCheck(@Body JsonObject jsonObject);
+    Call<ResponseJson> emailCheck(@Body CreateMemberDto Object);
 
     // post { email : wjflasdjfl@naver.com }
     // receive massage : 200 true , 404,405 false
@@ -20,15 +24,54 @@ public interface ApiInterface {
 
     //login
     @POST("/auth/login")
-    Call<ResponseJson> Login(@Body JsonObject jsonObject);
+    Call<ResponseJson> login(@Body LoginDto Object);
     // post { email : wjeojrwo@naver.com password : *******}
     // reeive massage : 1개
 
+    //sign up
+    @POST("/auth/create")
+    Call<ResponseJson> signUp(@Body JsonObject jsonObject);
+    // post { email : wjeojrwo@naver.com password : *******}
+    // reeive
+    //public class CreateMemberDto {
+    //    private String email; //중복체크 & 이메일 인증 완료된 이메일
+    //    private String passwd;
+    //    private String birth; //yyyy-mm-dd
+    //    private String name;
+    //    private String phone;
+    //    private String nickname; //중복없는 닉네임
+    //    private String gender; // Male Female
+    //}
+
+    //sign up
+    @POST("/auth/findid")
+    Call<ResponseJson> findID(@Body JsonObject jsonObject);
+    // post { email : wjeojrwo@naver.com password : *******}
+    // reeive massage :public class FindMemberDto {
+    //    @NonNull private String name;
+    //    @NonNull private String birth;
+    //    @NonNull private String phone;
+    //    private String email;
+    //}
 
 
+    //send email
+    @POST("/auth/findpw")
+    Call<ResponseJson> Login(@Body JsonObject jsonObject);
+    // post { email }
+    // reeive massage : 1개
+    //public class FindMemberDto {
+    //
+        //    @NonNull private String name;
+        //    @NonNull private String birth;
+        //    @NonNull private String phone;
+        //    private String email;
+        //}
 
     //my page upload
-    @POST("/")
+
+
+    @POST("/auth/")
     Call<ResponseJson> getLogin(@Body JsonObject jsonObject);
 
 

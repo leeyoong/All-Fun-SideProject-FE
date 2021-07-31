@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.example.test.DTO.*;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,9 +61,10 @@ public class loginpage extends AppCompatActivity {
             public void onClick(View view) {
                 //Intent passfoundIntent = new Intent(loginpage.this, passforgot.class);
                 //loginpage.this.startActivity(passfoundIntent);
-                Object TestObject = new Object("hwjoo","12345");
+                Object TestObject = new Object(idname.toString(),passname.toString());
                 ApiInterface apiService = web.getClient().create(ApiInterface.class);
-                Call<ResponseJson> call = apiService.EmailCheck(TestObject.toJson());
+                LoginDto test = new LoginDto("lee young", "sibal");
+                Call<ResponseJson> call = apiService.login(test);
 
                 call.enqueue(new Callback<ResponseJson>() {
                     @Override
