@@ -1,36 +1,38 @@
-package com.example.test;
-
-import androidx.annotation.ChecksSdkIntAtLeast;
+package com.example.test.WEB;
 
 import com.example.test.DTO.*;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 public interface ApiInterface {
 
 
     //email.check
     @POST("/auth/check/email")
-    Call<ResponseJson> emailCheck(@Body CreateMemberDto Object);
+    Call<ResponseJson> emailCheck(@Body OneItemDto Object);
 
     // post { email : wjflasdjfl@naver.com }
     // receive massage : 200 true , 404,405 false
 
+    //email.check
+    @POST("/auth/check/nickname")
+    Call<ResponseJson> nickNameCheck(@Body OneItemDto Object);
+
+    // post { email : wjflasdjfl@naver.com }
+    // receive massage : 200 true , 404,405 false
 
     //login
     @POST("/auth/login")
-    Call<ResponseJson> login(@Body LoginDto Object);
+    Call<MemberDataDto> login(@Body LoginDto Object);
     // post { email : wjeojrwo@naver.com password : *******}
     // reeive massage : 1개
 
     //sign up
     @POST("/auth/create")
-    Call<ResponseJson> signUp(@Body JsonObject jsonObject);
+    Call<ResponseJson> createMember(@Body CreateMemberDto jsonObject);
     // post { email : wjeojrwo@naver.com password : *******}
     // reeive
     //public class CreateMemberDto {
@@ -45,7 +47,7 @@ public interface ApiInterface {
 
     //sign up
     @POST("/auth/findid")
-    Call<ResponseJson> findID(@Body JsonObject jsonObject);
+    Call<ResponseJson> findID(@Body FindEmailDto Object);
     // post { email : wjeojrwo@naver.com password : *******}
     // reeive massage :public class FindMemberDto {
     //    @NonNull private String name;
@@ -57,7 +59,7 @@ public interface ApiInterface {
 
     //send email
     @POST("/auth/findpw")
-    Call<ResponseJson> Login(@Body JsonObject jsonObject);
+    Call<ResponseJson> findPW(@Body FindPasswordDto Object);
     // post { email }
     // reeive massage : 1개
     //public class FindMemberDto {

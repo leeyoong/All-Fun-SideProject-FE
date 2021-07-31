@@ -1,6 +1,10 @@
 package com.example.test.DTO;
 
 public class OneItemDto {
+    public OneItemDto(String item) {
+        this.item = item;
+    }
+
     private String item;
 
 

@@ -2,19 +2,20 @@ package com.example.test.DTO;
 
 import androidx.annotation.NonNull;
 
- public class FindMemberDto {
+ public class FindPasswordDto {
 
-    public FindMemberDto(@NonNull String name, @NonNull String birth, @NonNull String phone, String email) {
+    public FindPasswordDto(String name, String birth, String phone, String email) {
        this.name = name;
        this.birth = birth;
        this.phone = phone;
        this.email = email;
     }
 
-    @NonNull private String name;
-    @NonNull private String birth;
-    @NonNull private String phone;
+    private String name;
+    private String birth;
+    private String phone;
     private String email;
+
 
 
 
@@ -23,7 +24,7 @@ import androidx.annotation.NonNull;
        return name;
     }
 
-    public void setName(@NonNull String name) {
+    public void setName( String name) {
        this.name = name;
     }
 
@@ -32,7 +33,7 @@ import androidx.annotation.NonNull;
        return birth;
     }
 
-    public void setBirth(@NonNull String birth) {
+    public void setBirth( String birth) {
        this.birth = birth;
     }
 
@@ -41,7 +42,7 @@ import androidx.annotation.NonNull;
        return phone;
     }
 
-    public void setPhone(@NonNull String phone) {
+    public void setPhone( String phone) {
        this.phone = phone;
     }
 
@@ -55,7 +56,7 @@ import androidx.annotation.NonNull;
 
     @Override
     public String toString() {
-       return "FindMemberDto{" +
+       return "FindPasswordDto{" +
                "name='" + name + '\'' +
                ", birth='" + birth + '\'' +
                ", phone='" + phone + '\'' +

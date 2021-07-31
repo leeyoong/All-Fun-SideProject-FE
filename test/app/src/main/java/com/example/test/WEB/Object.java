@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.WEB;
 
 import com.google.gson.JsonObject;
 

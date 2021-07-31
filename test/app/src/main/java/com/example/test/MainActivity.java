@@ -9,15 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.util.Log;
 
-import com.google.android.gms.common.api.*;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.gson.JsonObject;
+import com.example.test.WEB.ApiInterface;
+import com.example.test.WEB.Object;
+import com.example.test.WEB.ResponseJson;
+import com.example.test.WEB.web;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,27 +35,7 @@ public class MainActivity extends AppCompatActivity {
         TextView idfound = (TextView) findViewById(R.id.idfound);
         TextView passfound = (TextView) findViewById(R.id.passfound);
 
-        Object TestObject = new Object("hwjoo","12345");
-        ApiInterface apiService = web.getClient().create(ApiInterface.class);
-        Call<ResponseJson> call = apiService.EmailCheck(TestObject.toJson());
 
-        call.enqueue(new Callback<ResponseJson>() {
-            @Override
-            public void onResponse(Call<ResponseJson> call, Response<ResponseJson> response) {
-                try {
-                    Log.d("TEST", response.body().toString());
-                    ResponseJson responseJson = response.body();
-                    idfound.setText(responseJson.toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseJson> call, Throwable t) {
-                idfound.setText(t.toString());
-            }
-        });
 
 
     }

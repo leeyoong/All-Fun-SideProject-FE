@@ -1,10 +1,24 @@
 package com.example.test.DTO;
 
 import java.time.LocalDateTime;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 
 public class MemberDataDto {
 
 
+    public MemberDataDto(Long id, String email, String passwd, String birth, String name, String phone, String nickname, LocalDateTime createDate, String gender) {
+        this.id = id;
+        this.email = email;
+        this.passwd = passwd;
+        this.birth = birth;
+        this.name = name;
+        this.phone = phone;
+        this.nickname = nickname;
+        this.createDate = createDate;
+        this.gender = gender;
+    }
 
     private Long id; // member id (pk)
     private String email; // Log-In Id
@@ -15,6 +29,7 @@ public class MemberDataDto {
     private String nickname; // nickname
     private LocalDateTime createDate; // create member time (yyyy-mm-dd hh:mm:ss)
     private String gender; // gender(M / F)
+
     public Long getId() {
         return id;
     }

@@ -10,12 +10,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.example.test.DTO.*;
+import com.example.test.WEB.web;
 
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class loginpage extends AppCompatActivity {
 
@@ -59,30 +55,9 @@ public class loginpage extends AppCompatActivity {
         passfound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent passfoundIntent = new Intent(loginpage.this, passforgot.class);
-                //loginpage.this.startActivity(passfoundIntent);
-                Object TestObject = new Object(idname.toString(),passname.toString());
-                ApiInterface apiService = web.getClient().create(ApiInterface.class);
-                LoginDto test = new LoginDto("lee young", "sibal");
-                Call<ResponseJson> call = apiService.login(test);
+                web base = new web();
+                base.Post_Login("hi","sibal");
 
-                call.enqueue(new Callback<ResponseJson>() {
-                    @Override
-                    public void onResponse(Call<ResponseJson> call, Response<ResponseJson> response) {
-                        try {
-                            Log.d("TEST", response.body().toString());
-                            ResponseJson responseJson = response.body();
-                            idname.setText(responseJson.toString());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseJson> call, Throwable t) {
-                        idfound.setText("안됬음");
-                    }
-                });
 
 
             }
