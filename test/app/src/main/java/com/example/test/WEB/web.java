@@ -3,7 +3,14 @@ package com.example.test.WEB;
 import android.util.Log;
 
 import com.example.test.DTO.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
+import java.lang.reflect.Member;
+import java.util.HashMap;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -75,6 +82,7 @@ public class web {
         //보낼 오브젝트 생성
         OneItemDto Object= new OneItemDto(Nickname);
         // 요청 시작
+
         Call<ResponseJson> call = apiService.nickNameCheck(Object);
         call.enqueue(new Callback<ResponseJson>() {
             @Override
@@ -154,8 +162,9 @@ public class web {
             @Override
             public void onResponse(Call<MemberDataDto> call, Response<MemberDataDto> response) {
                 try {
-                    Log.d("TEST", response.body().toString());
-                    MemberDataDto data = response.body();
+                    System.out.println(response.headers());
+
+
                     if(response.code() == 200){
                         //성공했을 때 200
 
@@ -167,8 +176,8 @@ public class web {
                     }
                     //idfound.setText(responseJson.toString());
                 } catch (Exception e) {
+                    System.out.println("여기다 씨발아");
 
-                    e.printStackTrace();
 
 
                 }

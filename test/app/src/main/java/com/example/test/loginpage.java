@@ -55,9 +55,20 @@ public class loginpage extends AppCompatActivity {
         passfound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 web base = new web();
                 base.Post_Login("hi","sibal");
 
+
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                web base = new web();
+                base.Post_Login(idname.getText().toString(),passname.getText().toString());
 
 
             }
