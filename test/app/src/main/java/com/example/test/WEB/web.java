@@ -22,7 +22,7 @@ public class web {
 
     public static final String BASE_URL = "http://10.0.2.2:8080";
     private static Retrofit retrofit = null;
-
+    private static int HTTPCODE = 0;
 
     public static Retrofit getClient() {
         if (retrofit==null) {
@@ -32,6 +32,15 @@ public class web {
                     .build();
         }
         return retrofit;
+    }
+
+
+    private void setHTTPCODE(int CODE){
+        this.HTTPCODE = CODE;
+    }
+
+    public int getHTTPCODE(){
+        return this.HTTPCODE;
     }
 
 
@@ -52,6 +61,7 @@ public class web {
                 try {
                     Log.d("TEST", response.body().toString());
                     ResponseJson responseJson = response.body();
+                    setHTTPCODE(response.code());
                     if(response.code() == 200){
                         //성공했을 때 200
 
@@ -90,6 +100,7 @@ public class web {
                 try {
                     Log.d("TEST", response.body().toString());
                     ResponseJson responseJson = response.body();
+                    setHTTPCODE(response.code());
                     if(response.code() == 200){
                         //성공했을 때 200
 
@@ -127,6 +138,7 @@ public class web {
                 try {
                     Log.d("TEST", response.body().toString());
                     ResponseJson responseJson = response.body();
+                    setHTTPCODE(response.code());
                     if(response.code() == 200){
                         //성공했을 때 200
 
@@ -164,7 +176,7 @@ public class web {
                 try {
                     System.out.println(response.headers());
 
-
+                    setHTTPCODE(response.code());
                     if(response.code() == 200){
                         //성공했을 때 200
 
@@ -176,7 +188,7 @@ public class web {
                     }
                     //idfound.setText(responseJson.toString());
                 } catch (Exception e) {
-                    System.out.println("여기다 씨발아");
+                    e.printStackTrace();
 
 
 
@@ -206,6 +218,7 @@ public class web {
                 try {
                     Log.d("TEST", response.body().toString());
                     ResponseJson responseJson = response.body();
+                    setHTTPCODE(response.code());
                     //성공시
 
                     //idfound.setText(responseJson.toString());
@@ -237,6 +250,7 @@ public class web {
                 try {
                     Log.d("TEST", response.body().toString());
                     ResponseJson responseJson = response.body();
+                    setHTTPCODE(response.code());
                     //성공시
 
                     //idfound.setText(responseJson.toString());
@@ -268,6 +282,7 @@ public class web {
                 try {
                     Log.d("TEST", response.body().toString());
                     ResponseJson responseJson = response.body();
+                    setHTTPCODE(response.code());
                     //성공시
 
                     //idfound.setText(responseJson.toString());
